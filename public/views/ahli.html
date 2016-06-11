@@ -1,0 +1,57 @@
+<h3>Senarai ahli</h3>
+<form>
+    <div class="form-group">
+        <div class="input-group">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></span>
+            <input type="text" class="form-control" placeholder="Cari Ahli (Nama, No kad pengenalan, ... )" ng-model="filterAhli">
+        </div>
+    </div>
+</form>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <td>No.</td>
+            <td>Kad Pengenalan</td>
+            <td>Nama Ahli</td>
+            <td>Nombor Telefon</td>
+            <td>Maklumat Penuh</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="x in ahli | filter:filterAhli">
+            <td></td>
+            <td>{{x.icnumber}}</td>
+            <td>{{x.fullname}}</td>
+            <td>{{x.mobilenumber}}</td>
+            <td><a href="{{x.email}}">View</a></td>
+        </tr>
+    </tbody>
+</table>
+<h3>Daftar ahli baru</h3>
+<form ng-submit="addAhli()">
+    <div class="form-group">
+        <input type="text" placeholder="Nama ahli" class="form-control" ng-model="fullname"></input>
+    </div>
+    <div class="form-group">
+        <input type="text" placeholder="Alamat rumah" class="form-control" ng-model="homeaddress"></input>
+    </div>
+    <div class="form-group">
+        <input type="text" placeholder="Tarikh lahir" class="form-control" ng-model="dob"></input>
+    </div>
+    <div class="form-group">
+        <input type="text" placeholder="No Kad Pengenalan" class="form-control" ng-model="icnumber"></input>
+    </div>
+    <div class="form-group">
+        <input type="text" placeholder="No telefon rumah" class="form-control" ng-model="homenumber"></input>
+    </div>
+    <div class="form-group">
+        <input type="text" placeholder="No telefon bimbit" class="form-control" ng-model="mobilenumber"></input>
+    </div>
+    <div class="form-group">
+        <input type="text" placeholder="Pekerjaan" class="form-control" ng-model="occupation"></input>
+    </div>
+    <div class="form-group">
+        <input type="text" placeholder="Alamat email" class="form-control" ng-model="email"></input>
+    </div>
+    <button type="submit" class="btn btn-primary">Daftar Ahli</button>
+</form>
