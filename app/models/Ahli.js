@@ -1,19 +1,19 @@
 // grab the mongoose module
 var mongoose = require('mongoose');
-var Schema = mongoose.schema;
+var Schema = mongoose.Schema;
 
 // define schema
 var ahliSchema = new Schema({
-  fullname : String,
-  homeaddress : String,
-  dob : String,
-  icnumber : String,
-  homenumber : String,
-  mobilenumber : String,
-  occupation : String,
-  email : String,
-  created_at : Date,
-  updated_at : Date
+  fullname: String,
+  homeaddress: String,
+  dob: String,
+  icnumber: String,
+  homenumber: String,
+  mobilenumber: String,
+  occupation: String,
+  email: String,
+  created_at: Date,
+  updated_at: Date
 });
 
 // define custom method for schema

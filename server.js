@@ -9,9 +9,16 @@ var methodOverride = require('method-override');
 	
 // config files
 var db = require('./config/db');
+console.log('Database connecting to ' + db.url);
+mongoose.connect(db.url); // connect to our mongoDB database
+mongoose.connection.on('error', function(err){
+  console.log('Connection error: ', err);
+});
+mongoose.connection.once('open', function(){
+  console.log('Database connected');
+});
 
 var port = process.env.PORT || 8080; // set our port
-mongoose.connect(db.url); // connect to our mongoDB database (commented out after you enter in your own credentials)
 
 // get all data/stuff of the body (POST) parameters
 app.use(bodyParser.json()); // parse application/json 
