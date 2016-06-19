@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 // define schema
-var ahliSchema = new Schema({
+var memberSchema = new Schema({
   fullname: String,
   homeaddress: String,
   dob: String,
@@ -17,13 +17,13 @@ var ahliSchema = new Schema({
 });
 
 // define custom method for schema
-ahliSchema.methods.namify = function(){
+memberSchema.methods.namify = function(){
   this.fullname = this.fullname + ' OK';
   return this.fullname;
 };
 
   // on every save, add the date
-ahliSchema.pre('save', function(next) {
+memberSchema.pre('save', function(next) {
   var currentDate = new Date();
   this.updated_at = currentDate;
   if (!this.created_at)
@@ -32,4 +32,4 @@ ahliSchema.pre('save', function(next) {
 });
 
 // module.exports allows us to pass this to other files when it is called
-module.exports = mongoose.model('Ahli', ahliSchema);
+module.exports = mongoose.model('Member', memberSchema);

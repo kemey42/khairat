@@ -8,9 +8,9 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 			controller: 'MainController'
 		})
 
-		.when('/ahli', {
-			templateUrl: 'views/ahli.html',
-			controller: 'AhliController'
+		.when('/member', {
+			templateUrl: 'views/member.html',
+			controller: 'MemberController'
 		})
 
 		.when('/geeks', {

@@ -18,7 +18,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr ng-repeat="x in ahli | filter:filterAhli">
+        <tr ng-repeat="x in member | filter:filterAhli">
             <td></td>
             <td>{{x.icnumber}}</td>
             <td>{{x.fullname}}</td>
@@ -28,7 +28,7 @@
     </tbody>
 </table>
 <h3>Daftar ahli baru</h3>
-<form ng-submit="addAhli()">
+<form ng-submit="addMember()">
     <div class="form-group">
         <input type="text" placeholder="Nama ahli" class="form-control" ng-model="fullname"></input>
     </div>
@@ -54,4 +54,5 @@
         <input type="text" placeholder="Alamat email" class="form-control" ng-model="email"></input>
     </div>
     <button type="submit" class="btn btn-primary">Daftar Ahli</button>
+    <a ng-model="status"></a>
 </form>

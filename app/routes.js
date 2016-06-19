@@ -1,42 +1,49 @@
-var Ahli = require('./models/Ahli.js');
+var Member = require('./models/Member.js');
 
 module.exports = function(app) {
 
-	// server routes ===========================================================
-	// handle things like api calls
-	// authentication routes
+  // server routes ===========================================================
+  // handle things like api calls
+  // authentication routes
 
-  // Ahli routes
-  app.get('/api/ahli', function(req, res) {
-    Ahli.find(function(err, ahli){
-      if (err)
-        res.send(err);
-      res.json(ahli);
+  // Member routes
+  app.get('/api/member', function(req, res) {
+    Member.find(function(err, data) {
+      if (err) return res.send(err);
+      res.json(data);
     });
   });
 
-  app.post('/api/ahli', function(req,res) {
-    var newAhli = new Ahli();
-    newAhli.fullname = req.body.fullname;
-    newAhli.homeaddress = req.body.homeaddress;
-    newAhli.dob = req.body.dob;
-    newAhli.icnumber = req.body.icnumber;
-    newAhli.homenumber = req.body.homenumber;
-    newAhli.mobilenumber = req.body.mobilenumber;
-    newAhli.occupation = req.body.occupation;
-    newAhli.email = req.body.email;
+  app.get('/api/member/:icnumber', function(req, res) {
+    if (req.params.icnumber) {
+      Member.find({ icnumber: req.params.icnumber }, function(err, data) {
+        if (err) return res.send(err);
+        res.json(data);
+      });
+    };
+  });
 
-    newAhli.save(function(err) {
-      if(err)
-        res.send(err);
-      res.json({message:'New ahli created'});
+  app.post('/api/member', function(req, res) {
+    var newMember = new Member();
+    newMember.fullname = req.body.fullname;
+    newMember.homeaddress = req.body.homeaddress;
+    newMember.dob = req.body.dob;
+    newMember.icnumber = req.body.icnumber;
+    newMember.homenumber = req.body.homenumber;
+    newMember.mobilenumber = req.body.mobilenumber;
+    newMember.occupation = req.body.occupation;
+    newMember.email = req.body.email;
+
+    newMember.save(function(err) {
+      if (err) return res.send(err);
+      res.json({ message: 'New member created' });
     });
   });
-  
-	// frontend routes =========================================================
-	// route to handle all angular requests
-	app.get('*', function(req, res) {
-		res.sendfile('./public/index.html');
-	});
+
+  // frontend routes =========================================================
+  // route to handle all angular requests
+  app.get('*', function(req, res) {
+    res.sendfile('./public/index.html');
+  });
 
 };

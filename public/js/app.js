@@ -2,8 +2,8 @@ angular.module('khairatApp', [
   'ngRoute', 
   'appRoutes', 
   'MainCtrl', 
-  'AhliCtrl', 
-  'AhliService', 
+  'MemberCtrl', 
+  'MemberService', 
   'GeekCtrl', 
   'GeekService'
 ]);
