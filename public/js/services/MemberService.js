@@ -1,4 +1,4 @@
-angular.module('MemberService', []).factory('Member', ['$http', function($http) {
+angular.module('MemberService', []).factory('memberFactory', ['$http', function($http) {
 
   var urlBase = '/api/member';
   var memberFactory = {};

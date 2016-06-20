@@ -1,26 +1,16 @@
-angular.module('MemberCtrl', [])
-.factory('memberFactory', ['$http', function($http) {
+angular.module('MemberCtrl', ['MemberService']).controller('MemberController', function($scope, memberFactory) {
+  $scope.member;
 
-  var urlBase = '/api/member';
-  var memberFactory = {};
+  getMembers();
 
-  memberFactory.getMembers = function() {
-    return $http.get(urlBase);
+  function getMembers() {
+    memberFactory.getMembers()
+      .then(function(response){
+        $scope.member = response.data;
+      }, function(error){
+        $scope.status = "Error" + error.message;
+      });
   };
-
-  memberFactory.getMember = function(id) {
-    return $http.get(urlBase + '/' + id);
-  };
-
-  memberFactory.insertMember = function(member) {
-    return $http.post(urlBase, member);
-  }
-
-  return memberFactory;
-
-}])
-.controller('MemberController', function($scope, memberFactory) {
-  $scope.member = [];
 
   $scope.addMember = function(){
     var newMember = {
@@ -49,5 +39,7 @@ angular.module('MemberCtrl', [])
     $scope.mobilenumber = '';
     $scope.occupation = '';
     $scope.email = '';
+
+    getMembers();
   };
 });
