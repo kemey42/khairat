@@ -1,4 +1,5 @@
 <h3>Senarai ahli</h3>
+<hr>
 <form>
     <div class="form-group">
         <div class="input-group">
@@ -14,7 +15,7 @@
             <td>Kad Pengenalan</td>
             <td>Nama Ahli</td>
             <td>Nombor Telefon</td>
-            <td>Maklumat Penuh</td>
+            <td>View</td>
         </tr>
     </thead>
     <tbody>
@@ -23,36 +24,39 @@
             <td>{{x.icnumber}}</td>
             <td>{{x.fullname}}</td>
             <td>{{x.mobilenumber}}</td>
-            <td><a href="/api/member/{{x.icnumber}}">View</a></td>
+            <td><a href="/member/{{x.icnumber}}">Maklumat Penuh</a> | <a href="/payment/member={{x.icnumber}}">Rekod Pembayaran</a></td>
         </tr>
     </tbody>
 </table>
+<br>
+<br>
 <h3>Daftar ahli baru</h3>
+<hr>
 <form ng-submit="addMember()">
     <div class="form-group">
-        <input type="text" placeholder="Nama ahli" class="form-control" ng-model="fullname"></input>
+        <input type="text" placeholder="Nama ahli" class="form-control" ng-model="inputNewMember.fullname"></input>
     </div>
     <div class="form-group">
-        <input type="text" placeholder="Alamat rumah" class="form-control" ng-model="homeaddress"></input>
+        <input type="text" placeholder="Alamat rumah" class="form-control" ng-model="inputNewMember.homeaddress"></input>
     </div>
     <div class="form-group">
-        <input type="text" placeholder="Tarikh lahir" class="form-control" ng-model="dob"></input>
+        <input type="text" placeholder="Tarikh lahir" class="form-control" ng-model="inputNewMember.dob"></input>
     </div>
     <div class="form-group">
-        <input type="text" placeholder="No Kad Pengenalan" class="form-control" ng-model="icnumber"></input>
+        <input type="text" placeholder="No Kad Pengenalan" class="form-control" ng-model="inputNewMember.icnumber"></input>
     </div>
     <div class="form-group">
-        <input type="text" placeholder="No telefon rumah" class="form-control" ng-model="homenumber"></input>
+        <input type="text" placeholder="No telefon rumah" class="form-control" ng-model="inputNewMember.homenumber"></input>
     </div>
     <div class="form-group">
-        <input type="text" placeholder="No telefon bimbit" class="form-control" ng-model="mobilenumber"></input>
+        <input type="text" placeholder="No telefon bimbit" class="form-control" ng-model="inputNewMember.mobilenumber"></input>
     </div>
     <div class="form-group">
-        <input type="text" placeholder="Pekerjaan" class="form-control" ng-model="occupation"></input>
+        <input type="text" placeholder="Pekerjaan" class="form-control" ng-model="inputNewMember.occupation"></input>
     </div>
     <div class="form-group">
-        <input type="text" placeholder="Alamat email" class="form-control" ng-model="email"></input>
+        <input type="text" placeholder="Alamat email" class="form-control" ng-model="inputNewMember.email"></input>
     </div>
     <button type="submit" class="btn btn-primary">Daftar Ahli</button>
-    <a ng-model="status"></a>
+    <span>{{status}}</span>
 </form>

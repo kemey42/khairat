@@ -40,6 +40,15 @@ module.exports = function(app) {
     });
   });
 
+  app.delete('/api/member/:icnumber', function(req, res) {
+    if (req.params.icnumber) {
+      Member.find({ icnumber: req.params.icnumber }).remove(function(err) {
+        if (err) return res.send(err);
+        res.json({ message: 'A member deleted' });
+      });
+    };
+  });
+
   // frontend routes =========================================================
   // route to handle all angular requests
   app.get('*', function(req, res) {

@@ -13,6 +13,11 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 			controller: 'MemberController'
 		})
 
+		.when('/member/:icnumber',{
+			templateUrl: 'views/memberInfo.html',
+			controller: 'MemberInfoController'
+		})
+
 		.when('/geeks', {
 			templateUrl: 'views/geek.html',
 			controller: 'GeekController'	

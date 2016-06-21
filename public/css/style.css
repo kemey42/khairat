@@ -1,14 +1,16 @@
-body { padding-top:30px; }
+body {
+  padding: 30px 0px;
+}
 
 tbody {
-    counter-reset: rowNumber;
+  counter-reset: rowNumber;
 }
 
 tbody tr {
-    counter-increment: rowNumber;
+  counter-increment: rowNumber;
 }
 
 tbody tr td:first-child::before {
-    content: counter(rowNumber);
-    min-width: 1em;
+  content: counter(rowNumber);
+  min-width: 1em;
 }

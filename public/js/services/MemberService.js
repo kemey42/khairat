@@ -15,6 +15,10 @@ angular.module('MemberService', []).factory('memberFactory', ['$http', function(
     return $http.post(urlBase, member);
   }
 
+  memberFactory.removeMember = function(id) {
+    return $http.delete(urlBase + '/' + id);
+  }
+
   return memberFactory;
 
 }]);
