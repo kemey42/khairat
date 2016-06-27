@@ -6,5 +6,6 @@ angular.module('khairatApp', [
   'MemberInfoCtrl', 
   'MemberService', 
   'GeekCtrl', 
-  'GeekService'
+  'GeekService',
+  'angular-loading-bar',
 ]);

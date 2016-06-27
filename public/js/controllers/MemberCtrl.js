@@ -1,4 +1,4 @@
-angular.module('MemberCtrl', ['MemberService']).controller('MemberController', function($scope, memberFactory) {
+angular.module('MemberCtrl', ['MemberService']).controller('MemberController', function($scope, $window, memberFactory) {
   $scope.member;
   $scope.inputNewMember = {};
   $scope.inputNewMember.dependents = [];
@@ -14,6 +14,10 @@ angular.module('MemberCtrl', ['MemberService']).controller('MemberController', f
       });
   };
 
+  $scope.goToAddMember = function() {
+    $window.location.href = '/member/new';
+  };
+
   $scope.addDependents = function() {
     $scope.inputNewMember.dependents.push($scope.depTable.dependents);
     $scope.depTable.dependents = '';
@@ -26,9 +30,8 @@ angular.module('MemberCtrl', ['MemberService']).controller('MemberController', f
   $scope.addMember = function() {
     memberFactory.insertMember($scope.inputNewMember)
       .then(function(response) {
+        $window.location.href = '/member/' + $scope.inputNewMember.icnumber;
         $scope.inputNewMember = '';
-        $scope.status = 'New user succesfully added';
-        getMembers();
       }, function(error) {
         $scope.status = 'Error: ' + error.message;
       });

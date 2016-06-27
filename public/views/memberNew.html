@@ -1,0 +1,93 @@
+<h3>Daftar ahli baru</h3>
+<hr>
+<div class="well">
+  <form ng-submit="addMember()">
+    <h4>Butir-butir Maklumat Ahli</h4>
+    <hr>
+    <div class="form-group">
+      <input type="text" placeholder="Nama ahli" class="form-control" ng-model="inputNewMember.fullname"></input>
+    </div>
+    <div class="form-group">
+      <input type="text" placeholder="Alamat rumah" class="form-control" ng-model="inputNewMember.homeaddr"></input>
+    </div>
+    <div class="row">
+      <div class="form-group col-md-6">
+        <input type="text" placeholder="Tarikh lahir" class="form-control" ng-model="inputNewMember.dob"></input>
+      </div>
+      <div class="form-group col-md-6">
+        <input type="text" placeholder="No Kad Pengenalan" class="form-control" ng-model="inputNewMember.icnumber"></input>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-md-6">
+        <input type="text" placeholder="No telefon rumah" class="form-control" ng-model="inputNewMember.phone.home"></input>
+      </div>
+      <div class="form-group col-md-6">
+        <input type="text" placeholder="No telefon bimbit" class="form-control" ng-model="inputNewMember.phone.mobile"></input>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-md-6">
+        <input type="text" placeholder="Pekerjaan" class="form-control" ng-model="inputNewMember.occupation"></input>
+      </div>
+      <div class="form-group col-md-6">
+        <input type="text" placeholder="Alamat email" class="form-control" ng-model="inputNewMember.emailaddr"></input>
+      </div>
+    </div>
+    <br>
+    <h4>Butir-butir Tangungan Sekarang</h4>
+    <h5>(Isteri, anak belum berkahwin dan berumur di bawah 25 tahun, ibu bapa/mertua)</h5>
+    <hr>
+    <table id="table" class="table table-striped">
+      <thead>
+        <tr>
+          <td>Bil.</td>
+          <td>Nama</td>
+          <td>Hubungan</td>
+          <td>Tarikh Lahir</td>
+          <td>No. Kad Pengenalan</td>
+          <td><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="x in inputNewMember.dependents">
+          <td></td>
+          <td>{{x.fullname}}</td>
+          <td>{{x.relationship}}</td>
+          <td>{{x.dob}}</td>
+          <td>{{x.icnumber}}</td>
+          <td><span class="delX" ng-click="delDependents($index)">&times</span></td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <td></td>
+        <td>
+          <input type="text" placeholder="Nama Penuh" class="form-control" ng-model="depTable.dependents.fullname"></input>
+        </td>
+        <td>
+          <select class="form-control" ng-model="depTable.dependents.relationship">
+            <option value="Isteri">Isteri</option>
+            <option value="Anak">Anak</option>
+            <option value="Ibu bapa kandung">Ibu bapa kandung</option>
+            <option value="Ibu bapa mertua">Ibu bapa mertua</option>
+          </select>
+        </td>
+        <td>
+          <input type="text" placeholder="Tarikh Lahir" class="form-control" ng-model="depTable.dependents.dob"></input>
+        </td>
+        <td>
+          <input type="text" placeholder="No. Kad Pengenalan" class="form-control" ng-model="depTable.dependents.icnumber"></input>
+        </td>
+        <td>
+          <button type="button" ng-click="addDependents()" class="btn btn-default"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+        </td>
+      </tfoot>
+    </table>
+    <br>
+    <h4>Pengakuan</h4>
+    <h5>Dengan ini saya mengesahkan bahawa segala butiran yang diberikan seperti diatas adalah benar dan mengaku akan mematuhi segala syarat dan peraturan perlembagaan pertubuhan ini.</h5>
+    <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Daftar Ahli</button>
+    <span>{{status}}</span>
+  </form>
+</div>
+<a href="/member" class="btn btn-link" role="button"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span> Kembali ke Senarai Ahli</a>

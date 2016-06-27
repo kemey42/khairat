@@ -24,7 +24,7 @@ angular.module('MemberInfoCtrl', ['MemberService']).controller('MemberInfoContro
       }, function(error) {
         $scope.status = 'Error: ' + error.message;
       });
-      
+
   };
 
 });
