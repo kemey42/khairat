@@ -5,13 +5,22 @@ var Schema = mongoose.Schema;
 // define schema
 var memberSchema = new Schema({
   fullname: String,
-  homeaddress: String,
+  homeaddr: String,
   dob: String,
   icnumber: String,
-  homenumber: String,
-  mobilenumber: String,
+  phone: {
+    home: String,
+    mobile: String
+  },
   occupation: String,
-  email: String,
+  emailaddr: String,
+  dependents: [{
+    fullname: String,
+    relationship: String,
+    dob: String,
+    icnumber: String
+  }],
+  status: { type: Boolean, default: true},
   created_at: Date,
   updated_at: Date
 });

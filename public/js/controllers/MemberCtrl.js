@@ -1,5 +1,7 @@
 angular.module('MemberCtrl', ['MemberService']).controller('MemberController', function($scope, memberFactory) {
   $scope.member;
+  $scope.inputNewMember = {};
+  $scope.inputNewMember.dependents = [];
 
   getMembers();
 
@@ -12,8 +14,16 @@ angular.module('MemberCtrl', ['MemberService']).controller('MemberController', f
       });
   };
 
-  $scope.addMember = function() {
+  $scope.addDependents = function() {
+    $scope.inputNewMember.dependents.push($scope.depTable.dependents);
+    $scope.depTable.dependents = '';
+  };
 
+  $scope.delDependents = function(index) {
+    $scope.inputNewMember.dependents.splice(index, 1);
+  };
+
+  $scope.addMember = function() {
     memberFactory.insertMember($scope.inputNewMember)
       .then(function(response) {
         $scope.inputNewMember = '';

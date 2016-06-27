@@ -24,16 +24,7 @@ module.exports = function(app) {
   });
 
   app.post('/api/member', function(req, res) {
-    var newMember = new Member();
-    newMember.fullname = req.body.fullname;
-    newMember.homeaddress = req.body.homeaddress;
-    newMember.dob = req.body.dob;
-    newMember.icnumber = req.body.icnumber;
-    newMember.homenumber = req.body.homenumber;
-    newMember.mobilenumber = req.body.mobilenumber;
-    newMember.occupation = req.body.occupation;
-    newMember.email = req.body.email;
-
+    var newMember = new Member(req.body);
     newMember.save(function(err) {
       if (err) return res.send(err);
       res.json({ message: 'New member created' });

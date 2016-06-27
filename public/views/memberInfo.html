@@ -20,7 +20,7 @@
   </div>
   <div class="row">
     <label for="memberHomeAddress" class="col-sm-2 control-label">Alamat rumah: </label>
-    <span id="memberHomeAddress">{{member[0].homeaddress}}</span>
+    <span id="memberHomeAddress">{{member[0].homeaddr}}</span>
   </div>
   <div class="row">
     <label for="memberDOB" class="col-sm-2 control-label">Tarikh lahir: </label>
@@ -32,11 +32,11 @@
   </div>
   <div class="row">
     <label for="memberHomeNumber" class="col-sm-2 control-label">No. tel. rumah: </label>
-    <span id="memberHomeNumber">{{member[0].homenumber}}</span>
+    <span id="memberHomeNumber">{{member[0].phone.home}}</span>
   </div>
   <div class="row">
     <label for="memberHPnumber" class="col-sm-2 control-label">No. tel. bimbit: </label>
-    <span id="memberHPnumber">{{member[0].mobilenumber}}</span>
+    <span id="memberHPnumber">{{member[0].phone.mobile}}</span>
   </div>
   <div class="row">
     <label for="memberOccupation" class="col-sm-2 control-label">Pekerjaan: </label>
@@ -44,7 +44,7 @@
   </div>
   <div class="row">
     <label for="memberEmail" class="col-sm-2 control-label">Alamat email: </label>
-    <span id="memberEmail">{{member[0].email}}</span>
+    <span id="memberEmail">{{member[0].emailaddr}}</span>
   </div>
   <br>
   <h4>Butir-butir Tangungan Sekarang</h4>
@@ -61,12 +61,12 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
+      <tr ng-repeat="x in member[0].dependents">
         <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td>{{x.fullname}}</td>
+        <td>{{x.relationship}}</td>
+        <td>{{x.dob}}</td>
+        <td>{{x.icnumber}}</td>
       </tr>
     </tbody>
   </table>
@@ -74,11 +74,11 @@
   <hr>
   <div class="row">
     <label for="memberRegDate" class="col-sm-2 control-label">Tarikh daftar: </label>
-    <span id="memberRegDate">{{dateCreated}}</span>
+    <span id="memberRegDate">{{member[0].created_at}}</span>
   </div>
   <div class="row">
     <label for="memberUpdDate" class="col-sm-2 control-label">Tarikh terakhir kemaskini: </label>
-    <span id="memberUpdDate">{{dateUpdated}}</span>
+    <span id="memberUpdDate">{{member[0].updated_at}}</span>
   </div>
 </div>
 <span>{{status}}</span>
