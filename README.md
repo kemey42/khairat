@@ -2,7 +2,11 @@
 
 MEAN Stack Single Page Application
 
-## Installation
+## Online Demo
+
+[Development Demo on Heroku](https://khairatkematian.herokuapp.com/)
+
+## Local Installation
 1. Download the repository
 2. Install npm modules: `npm install`
 3. Install bower dependencies `bower install`

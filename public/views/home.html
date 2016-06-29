@@ -1,5 +1,62 @@
 <div class="jumbotron text-center">
-	<h1>Sistem e-Khairat</h1>
-
-	<p>{{ tagline }}</p>
+  <h1>Sistem e-Khairat</h1>
+  <small>{{tagline1}} | {{tagline2}}</small>
+</div>
+<div class="row">
+  <!-- Left sidebar -->
+  <div class="col-md-3">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Menu: Keahlian</h3>
+      </div>
+      <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked">
+          <li role="presentation"><a href="/member">Lihat senarai ahli</a></li>
+          <li role="presentation"><a href="/member/new">Daftar ahli baru</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- Center Area -->
+  <div class="col-md-6">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <h3>List of features</h3>
+        <hr>
+        <h4>Included and ready for testing:</h4>
+        <li>Create new member by inserting personal and dependents information</li>
+        <li>View list of members included with filter and search bar</li>
+        <li>Select and view one member's information in single page</li>
+        <li>Remove exisiting member</li>
+        <li>View organization details</li>
+        <li>Update organization details</li>
+        <br>
+        <h4>To be included in near future:</h4>
+        <li>Update member's information</li>
+        <li>Print member's information</li>
+        <li>Logic for member's database (dependents age, date plugin, auto IC number)</li>
+        <li>Register & login page, authentication system</li>
+        <br>
+        <h4>To be review (need further requirement):</h4>
+        <li>Payment record for every member</li>
+        <li>Overall cash balance</li>
+        <li>Create announcement to all members</li>
+        <li>...</li>
+      </div>
+    </div>
+  </div>
+  <!-- Right sidebar -->
+  <div class="col-md-3">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Maklumat Organisasi</h3>
+      </div>
+      <ul class="list-group">
+        <li class="list-group-item">Badan Khairat Kematian: {{organization.title}}</li>
+        <li class="list-group-item">Alamat: {{organization.addr}}</li>
+        <li class="list-group-item">No pendaftaran: {{organization.registration}}</li>
+        <li class="list-group-item">No rujukan kelulusan pendaftaran pertubuhan: {{organization.reference}}</li>
+      </ul>
+    </div>
+  </div>
 </div>

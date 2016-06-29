@@ -1,4 +1,5 @@
 var Member = require('./models/Member.js');
+var Org = require('./models/Org.js');
 
 module.exports = function(app) {
 
@@ -38,6 +39,41 @@ module.exports = function(app) {
         res.json({ message: 'A member deleted' });
       });
     };
+  });
+
+  // Organization routes
+  app.get('/api/org/:id', function(req, res) {
+    if (req.params.id) {
+      Org.findById(req.params.id, function(err, data) {
+        if (err) return res.send(err);
+        res.json(data);
+      });
+    };
+  });
+
+  app.put('/api/org/:id', function(req, res) {
+    if (req.params.id) {
+      Org.findById(req.params.id, function(err, data) {
+        if (err) return res.send(err);
+        data.title = req.body.title;
+        data.addr = req.body.addr;
+        data.registration = req.body.registration;
+        data.reference = req.body.reference;
+        data.save(function(err) {
+          if (err) return res.send(err);
+          res.json({ message: 'Organization details updated' });
+          return;
+        });
+      });
+    };
+  });
+
+  app.post('/api/org', function(req, res) {
+    var newOrg = new Org(req.body);
+    newOrg.save(function(err) {
+      if (err) return res.send(err);
+      res.json({ message: 'New organization created' });
+    });
   });
 
   // frontend routes =========================================================
