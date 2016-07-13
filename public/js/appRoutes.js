@@ -8,12 +8,12 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 			controller: 'MainController'
 		})
 
-		.when('/member', {
-			templateUrl: 'views/member.html',
+		.when('/member/all', {
+			templateUrl: 'views/memberList.html',
 			controller: 'MemberController'
 		})
 
-		.when('/member/new', {
+		.when('/member', {
 			templateUrl: 'views/memberNew.html',
 			controller: 'MemberController'
 		})
@@ -23,8 +23,8 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 			controller: 'MemberInfoController'
 		})
 
-		.when('/profile', {
-			templateUrl: 'views/profile.html',
+		.when('/profile/:_id/update', {
+			templateUrl: 'views/profileUpdate.html',
 			controller: 'ProfileController'	
 		});
 

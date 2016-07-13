@@ -28,13 +28,21 @@ angular.module('MemberCtrl', ['MemberService']).controller('MemberController', f
   };
 
   $scope.addMember = function() {
+    if ($scope.inputNewMember.icnumber) {
+      insertMember();
+    } else {
+      alert('Field IC Number is required');
+      return;
+    };
+  };
+
+  function insertMember() {
     memberFactory.insertMember($scope.inputNewMember)
       .then(function(response) {
         $window.location.href = '/member/' + $scope.inputNewMember.icnumber;
-        $scope.inputNewMember = '';
       }, function(error) {
         $scope.status = 'Error: ' + error.message;
       });
+  }
 
-  };
 });
